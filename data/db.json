@@ -3,7 +3,7 @@
     {
       "id": 0,
       "nome": "mateus",
-      "qtd_vitorias": 2
+      "qtd_vitorias": 5
     },
     {
       "id": 1,
@@ -13,27 +13,27 @@
     {
       "id": 2,
       "nome": "Eloi",
-      "qtd_vitorias": 3
+      "qtd_vitorias": 9
     },
     {
       "id": 3,
       "nome": "Lucas",
-      "qtd_vitorias": 1
+      "qtd_vitorias": 2
     },
     {
       "id": 4,
       "nome": "Islaine",
-      "qtd_vitorias": 3
+      "qtd_vitorias": 2
     },
     {
       "id": 5,
       "nome": "Adickson",
-      "qtd_vitorias": 1
+      "qtd_vitorias": 4
     },
     {
       "id": 6,
       "nome": "Marcos",
-      "qtd_vitorias": 2
+      "qtd_vitorias": 0
     }
   ]
 }

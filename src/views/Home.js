@@ -17,8 +17,10 @@ export default function Home(){
     const [jogadores, setJogadores] = useState([])
     const [colunas, setColunas] = useState([])
     const [dadosVitorias, setDadosVitorias] = useState([])
+    const [hasChange, setHasChange] = useState(false);
 
     const handleAdicionar = async (jogador) =>{
+        setHasChange(true)
         jogador.qtd_vitorias += 1;
         console.log(jogador)
         const data = await fetch('http://localhost:5000/jogadores/'+jogador.id, {
@@ -32,29 +34,19 @@ export default function Home(){
         setJogadores((prevState) => prevState.map((jogador) => (jogador.id === data.id ? jogador = data : jogador)))
     }
     
-    useEffect(()=>{
-        getJogadores();
-
-    }, [])
-
-    useEffect(()=>{
-        getJogadores();
-
-    }, [handleAdicionar])
-
     const getJogadores = async () => {
         const dados = await fetch('http://localhost:5000/jogadores')
         .then((response) => response.json())
         .then((data) => data); 
-
+        
         setJogadores(dados)
         formataColunasLinhas(dados)
     }
-
+    
     const formataColunasLinhas = (dados) => {
         let colunas = []
         let linhas = []
-
+        
         dados.map((dado) => {
             colunas.push(dado.nome)
             linhas.push(dado.qtd_vitorias)
@@ -63,9 +55,20 @@ export default function Home(){
             setDadosVitorias(linhas)
         })
     }
+    useEffect(()=>{
+            getJogadores();
 
+    }, [])
+    
+    useEffect(()=>{
+        if(hasChange){
+            getJogadores();
+            setHasChange(false)
+        }
 
+    }, [jogadores])
 
+    
     return(
         <Grid 
         container
